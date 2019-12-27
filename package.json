@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "npm run build:clean && npm run build:lib",
+    "build:clean": "rimraf lib",
+    "build:lib": "babel --extensions '.ts,.js' --config-file ./.lib.babelrc src --out-dir lib"
   },
   "repository": {
     "type": "git",
@@ -37,6 +39,7 @@
     "jest": "^24.9.0",
     "jest-junit": "^9.0.0",
     "prettier": "^1.18.2",
+    "rimraf": "^3.0.0",
     "typescript": "^3.7.4"
   }
 }
