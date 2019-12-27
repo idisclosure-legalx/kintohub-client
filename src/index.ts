@@ -1,7 +1,11 @@
 import request from 'superagent';
 
+function makeEndpoint(environmentId: string): string {
+  return `https://${environmentId}.api.beta.kintohub.com/authorize`;
+}
+
 interface KintoHubClientConfig {
-  endpoint: string;
+  environmentId: string;
   clientId: string;
   clientSecret: string;
 }
@@ -10,25 +14,25 @@ class KintoHubClient {
   private endpoint: string;
   private clientId: string;
   private clientSecret: string;
-  private apiToken: string;
+  private apiToken: string | null;
 
   constructor(config: KintoHubClientConfig) {
     if (
       !config ||
-      !config.endpoint ||
+      !config.environmentId ||
       !config.clientId ||
       !config.clientSecret
     ) {
       throw new Error('Missing KintoHub Client Config');
     }
 
-    this.endpoint = config.endpoint;
+    this.endpoint = makeEndpoint(config.environmentId);
     this.clientId = config.clientId;
     this.clientSecret = config.clientSecret;
-    this.apiToken = '';
+    this.apiToken = null;
   }
 
-  get APIToken(): string {
+  get APIToken(): string | null {
     return this.apiToken;
   }
 
