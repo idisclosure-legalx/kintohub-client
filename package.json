@@ -1,6 +1,6 @@
 {
   "name": "kintohub-client",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "A simple KintoHub client to generate API Tokens for accessing KintoBlocks.",
   "main": "index.js",
   "scripts": {
