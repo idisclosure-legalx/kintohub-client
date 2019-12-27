@@ -1,0 +1,59 @@
+version: 2.1
+
+jobs:
+  unit_test:
+    docker:
+      - image: circleci/node:12.13.0
+    steps:
+      - checkout
+      - restore_cache:
+          key: yarn-packages-{{ checksum "yarn.lock" }}
+      - run:
+          name: Install Dependencies
+          command: yarn --frozen-lockfile
+      - run:
+          name: Test with Jest
+          command: yarn test-coverage  --ci --runInBand --reporters=default --reporters=jest-junit
+          environment:
+            JEST_JUNIT_OUTPUT_DIR: "reports/junit/js-test-results.xml"
+      - save_cache:
+          key: yarn-packages-{{ checksum "yarn.lock" }}
+          paths:
+            - ~/.cache/yarn
+      - store_artifacts:
+           path: jest-coverage
+      - store_test_results:
+           path: reports/junit
+  types_test:
+    docker:
+      - image: circleci/node:12.13.0
+    steps:
+      - checkout
+      - restore_cache:
+          key: yarn-packages-{{ checksum "yarn.lock" }}
+      - run:
+          name: Install Dependencies
+          command: yarn --frozen-lockfile
+      - run:
+          name: Test Typescript
+          command: yarn tsc
+      - save_cache:
+          key: yarn-packages-{{ checksum "yarn.lock" }}
+          paths:
+            - ~/.cache/yarn
+
+workflows:
+  checks:
+    jobs:
+      - unit_test:
+          filters:
+            branches:
+              ignore: master
+            tags:
+              ignore: /^release-.*/
+      - types_test:
+          filters:
+            branches:
+              ignore: master
+            tags:
+              ignore: /^release-.*/
