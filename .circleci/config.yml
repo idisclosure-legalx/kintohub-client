@@ -1,6 +1,19 @@
 version: 2.1
 
 jobs:
+  lint_test:
+    docker:
+      - image: circleci/node:12.13.0
+    steps:
+      - checkout
+      - restore_cache:
+          key: yarn-packages-{{ checksum "yarn.lock" }}
+      - run:
+          name: Install Dependencies
+          command: yarn --frozen-lockfile
+      - run:
+          name: Lint
+          command: yarn lint:ci
   unit_test:
     docker:
       - image: circleci/node:12.13.0
@@ -45,6 +58,12 @@ jobs:
 workflows:
   checks:
     jobs:
+      - lint_test:
+            filters:
+              branches:
+                ignore: master
+              tags:
+                ignore: /^release-.*/
       - unit_test:
           filters:
             branches:

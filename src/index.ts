@@ -11,9 +11,9 @@ interface KintoHubClientConfig {
 }
 
 class KintoHubClient {
-  private endpoint: string;
-  private clientId: string;
-  private clientSecret: string;
+  private readonly endpoint: string;
+  private readonly clientId: string;
+  private readonly clientSecret: string;
   private apiToken: string | null;
 
   constructor(config: KintoHubClientConfig) {
@@ -36,7 +36,7 @@ class KintoHubClient {
     return this.apiToken;
   }
 
-  async refreshAPIToken() {
+  async refreshAPIToken(): Promise<void> {
     const res = await request.post(this.endpoint).send({
       clientId: this.clientId,
       clientSecret: this.clientSecret,

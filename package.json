@@ -7,6 +7,8 @@
     "build": "npm run build:clean && npm run build:lib",
     "build:clean": "rimraf lib",
     "build:lib": "babel --extensions '.ts,.js' --config-file ./.lib.babelrc src --out-dir lib",
+    "lint": "eslint . --cache --report-unused-disable-directives",
+    "lint:ci": "eslint . --report-unused-disable-directives",
     "test": "NODE_ENV=testing jest",
     "test-coverage": "NODE_ENV=testing jest --coverage=true"
   },
@@ -33,6 +35,7 @@
     "@types/superagent": "^4.1.4",
     "@typescript-eslint/eslint-plugin": "^2.6.0",
     "@typescript-eslint/parser": "^2.6.0",
+    "babel-eslint": "^10.0.3",
     "babel-jest": "^24.9.0",
     "eslint": "^6.6.0",
     "eslint-config-prettier": "^6.5.0",
