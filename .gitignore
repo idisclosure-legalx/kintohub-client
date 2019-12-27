@@ -9,3 +9,4 @@ coverage
 junit.xml
 jest-coverage
 .eslintcache
+lib

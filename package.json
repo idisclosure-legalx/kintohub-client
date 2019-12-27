@@ -1,14 +1,15 @@
 {
   "name": "kintohub-client",
   "version": "0.1.0",
-  "description": "",
+  "description": "A simple KintoHub client to generate API Tokens for accessing KintoBlocks.",
   "main": "index.js",
   "scripts": {
-    "build": "npm run build:clean && npm run build:lib",
+    "build": "yarn build:clean && yarn build:lib",
     "build:clean": "rimraf lib",
     "build:lib": "babel --extensions '.ts,.js' --config-file ./.lib.babelrc src --out-dir lib",
     "lint": "eslint . --cache --report-unused-disable-directives",
     "lint:ci": "eslint . --report-unused-disable-directives",
+    "prepublish": "yarn build",
     "test": "NODE_ENV=testing jest",
     "test-coverage": "NODE_ENV=testing jest --coverage=true"
   },
@@ -16,10 +17,16 @@
     "type": "git",
     "url": "git+https://github.com/idisclosure-legalx/kintohub-client.git"
   },
-  "author": "",
+  "author": "LegalX",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/idisclosure-legalx/kintohub-client/issues"
+  },
+  "files": [
+    "lib"
+  ],
+  "engines": {
+    "node": ">=6.4.0"
   },
   "homepage": "https://github.com/idisclosure-legalx/kintohub-client#readme",
   "dependencies": {
