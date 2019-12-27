@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "moduleResolution": "node",
+    "allowJs": true,
+    "noEmit": true,
+    "strict": true,
+    "esModuleInterop": true,
+    "types": ["node", "jest", "superagent"]
+  },
+  "include": ["src"],
+  "exclude": ["node_modules"]
+}

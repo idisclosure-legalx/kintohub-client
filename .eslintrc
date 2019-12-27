@@ -1,0 +1,22 @@
+{
+  "parser": "@typescript-eslint/parser",
+  "extends": [
+    "plugin:@typescript-eslint/recommended",
+    "prettier/@typescript-eslint",
+    "plugin:prettier/recommended"
+  ],
+  "parserOptions": {
+    "ecmaVersion": 2018,
+    "sourceType": "module"
+  },
+  "plugins": ["babel"],
+  "rules": {
+    "comma-dangle": ["error", "only-multiline"],
+    "camelcase": "off",
+    "@typescript-eslint/camelcase": ["error", { "properties": "never" }]
+  },
+  "env": {
+    "jest": true,
+    "node": true
+  }
+}
