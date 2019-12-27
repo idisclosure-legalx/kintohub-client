@@ -13,7 +13,12 @@ class KintoHubClient {
   private apiToken: string;
 
   constructor(config: KintoHubClientConfig) {
-    if (!config.endpoint || !config.clientId || !config.clientSecret) {
+    if (
+      !config ||
+      !config.endpoint ||
+      !config.clientId ||
+      !config.clientSecret
+    ) {
       throw new Error('Missing KintoHub Client Config');
     }
 
@@ -38,10 +43,6 @@ class KintoHubClient {
 }
 
 function createKintoHubClient(config: KintoHubClientConfig): KintoHubClient {
-  if (!config.endpoint || !config.clientId || !config.clientSecret) {
-    throw new Error('Missing KintoHub Client Config');
-  }
-
   return new KintoHubClient(config);
 }
 
