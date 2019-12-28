@@ -10,6 +10,7 @@
     "lint": "eslint . --cache --report-unused-disable-directives",
     "lint:ci": "eslint . --report-unused-disable-directives",
     "prepublish": "yarn build",
+    "run": "node -r ts-node/register ./scripts/run.js",
     "test": "NODE_ENV=testing jest",
     "test-coverage": "NODE_ENV=testing jest --coverage=true"
   },
@@ -52,6 +53,7 @@
     "jest-junit": "^9.0.0",
     "prettier": "^1.18.2",
     "rimraf": "^3.0.0",
+    "ts-node": "^8.5.4",
     "typescript": "^3.7.4"
   }
 }

@@ -77,9 +77,10 @@ describe('client', () => {
   });
 
   describe('refreshAPIToken', () => {
-    const send = jest
-      .fn()
-      .mockResolvedValue({ body: { data: { token: 'token123' } } });
+    const send = jest.fn().mockResolvedValue({
+      status: 200,
+      text: JSON.stringify({ data: { token: 'token123' } }),
+    });
     request.post.mockImplementationOnce(() => ({ send }));
 
     beforeEach(() => {

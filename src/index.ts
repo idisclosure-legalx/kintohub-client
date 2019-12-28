@@ -42,7 +42,13 @@ class KintoHubClient {
       clientSecret: this.clientSecret,
     });
 
-    this.apiToken = res.body.data.token;
+    if (res.status === 200 && res.text) {
+      const body = JSON.parse(res.text);
+
+      if (body && body.data && body.data.token) {
+        this.apiToken = body.data.token;
+      }
+    }
   }
 }
 
