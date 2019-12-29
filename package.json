@@ -2,7 +2,7 @@
   "name": "kintohub-client",
   "version": "0.2.2",
   "description": "A simple KintoHub client to generate API Tokens for accessing KintoBlocks.",
-  "main": "index.js",
+  "main": "lib/index.js",
   "scripts": {
     "build": "yarn build:clean && yarn build:lib",
     "build:clean": "rimraf lib",
