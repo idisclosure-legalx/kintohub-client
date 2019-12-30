@@ -1,8 +1,24 @@
 # KintoHub Node.js Client
 
+[![npm (tag)](https://img.shields.io/npm/v/kintohub-client/latest)](https://www.npmjs.com/package/kintohub-client)
+
 ## Intro
 
 A simple KintoHub client to generate API Tokens for accessing KintoBlocks.
+
+## Installation
+
+npm
+
+```
+npm install kintohub-client
+```
+
+yarn
+
+```
+yarn add kintohub-client
+```
 
 ## Usage
 
@@ -15,6 +31,7 @@ const client = kintohub({
   clientSecret: 'secret',
 });
 
+// Refresh API Token
 await client.refreshAPIToken();
 
 console.log(client.APIToken);
