@@ -6,7 +6,7 @@
   "scripts": {
     "build": "yarn build:clean && yarn build:lib",
     "build:clean": "rimraf lib",
-    "build:lib": "babel --extensions '.ts,.js' --config-file ./.lib.babelrc src --out-dir lib",
+    "build:lib": "tsc",
     "lint": "eslint . --cache --report-unused-disable-directives",
     "lint:ci": "eslint . --report-unused-disable-directives",
     "prepublish": "yarn build",
